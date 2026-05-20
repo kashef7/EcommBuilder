@@ -25,7 +25,7 @@ services:
 
   # --- FRONTEND (REACT / NODE 22) ---
   frontend_app:
-    build: ./frontend
+    build: ./frontend/Ecomm_Builder
     container_name: ecomm-frontend-app
     networks:
       - frontend-net
