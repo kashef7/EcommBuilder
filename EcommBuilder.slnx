@@ -3,4 +3,7 @@
   <Folder Name="/services/Auth_Service/">
     <Project Path="services/Auth_Service/Ecomm_Builder_Auth_Service/Ecomm_Builder_Auth_Service.csproj" />
   </Folder>
+  <Folder Name="/services/Shop_Service/">
+    <Project Path="services/Shop_Service/Ecomm_Builder_Shop_Service/Ecomm_Builder_Shop_Service.csproj" />
+  </Folder>
 </Solution>
