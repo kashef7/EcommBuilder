@@ -1,9 +1,9 @@
 # Stage 1: Build the React Frontend (Node 22)
 FROM node:22-alpine AS frontend-builder
 WORKDIR /src/Frontend
-COPY src/Frontend/package*.json ./
+COPY src/Frontend/Ecomm_Builder_Frontend/package*.json ./
 RUN npm ci
-COPY src/Frontend/ ./
+COPY src/Frontend/Ecomm_Builder_Frontend ./
 RUN npm run build
 
 # Stage 2: Build & Publish the .NET 10 Web API Backend
