@@ -21,7 +21,7 @@ jobs:
 
       - name: Build Unified Multi-Stage Monolith Image
         run: |
-          docker build -t kashef7/ecomm-monolith-app:latest -f src/Backend/Dockerfile .
+          docker build -t kashef7/ecomm-monolith-app:latest -f src/Backend/Ecomm_Backend/Dockerfile .
 
       - name: Push Monolith Image to Docker Hub
         run: |
