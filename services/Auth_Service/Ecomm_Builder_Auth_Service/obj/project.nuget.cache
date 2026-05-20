@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "VnFwm+BTrDU=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\youss\\Desktop\\college\\Projects\\EcommBuilder\\services\\Auth_Service\\Ecomm_Builder_Auth_Service\\Ecomm_Builder_Auth_Service.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\youss\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.8\\microsoft.aspnetcore.openapi.10.0.8.nupkg.sha512",
+    "C:\\Users\\youss\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
