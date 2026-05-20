@@ -1,0 +1,6 @@
+@Ecomm_Backend_HostAddress = http://localhost:5178
+
+GET {{Ecomm_Backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

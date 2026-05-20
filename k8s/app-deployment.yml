@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecomm-monolith-app
+  namespace: default
+  labels:
+    app: ecomm-monolith-app
+    tier: frontend-backend
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: ecomm-monolith-app
+  template:
+    metadata:
+      labels:
+        app: ecomm-monolith-app
+    spec:
+      containers:
+        - name: monolith-app
+          image: kashef7/ecomm-monolith-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              name: httpport
+          env:
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: DB_PASSWORD
+            - name: ConnectionStrings__DefaultConnection
+              value: "Host=postgres-db;Port=5432;Database=ecomm;Username=postgres;Password=$(DB_PASSWORD)"
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Production
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /api/health
+              port: 80
+            initialDelaySeconds: 20
+            periodSeconds: 15
+            timeoutSeconds: 5
+          resources:
+            requests:
+              cpu: 100m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ecomm-monolith-service
+  namespace: default
+  labels:
+    app: ecomm-monolith-app
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http
+  selector:
+    app: ecomm-monolith-app
+  type: LoadBalancer

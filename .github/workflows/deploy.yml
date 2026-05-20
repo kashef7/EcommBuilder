@@ -1,0 +1,36 @@
+name: EcommBuilder Local CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Local Build, Push & Kubernetes Deploy
+    runs-on: self-hosted
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build Unified Multi-Stage Monolith Image
+        run: |
+          docker build -t kashef7/ecomm-monolith-app:latest -f src/Backend/Dockerfile .
+
+      - name: Push Monolith Image to Docker Hub
+        run: |
+          docker push kashef7/ecomm-monolith-app:latest
+
+      - name: Apply Kubernetes Declarative Manifests
+        run: |
+          kubectl apply -f k8s/
+
+      - name: Force Zero-Downtime Rolling Restart
+        run: |
+          kubectl rollout restart deployment/ecomm-monolith-app

@@ -1,6 +1,0 @@
-@Ecomm_Builder_Shop_Service_HostAddress = http://localhost:5275
-
-GET {{Ecomm_Builder_Shop_Service_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
