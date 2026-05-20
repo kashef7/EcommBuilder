@@ -40,7 +40,7 @@ pipeline {
             steps {
                 echo 'Executing Zero-Downtime Rebuild & Hot-Swap via Docker Compose...'
                 // Rebuilds only modified service layers and swaps containers seamlessly
-                sh 'docker-compose up -d --build'
+                sh 'docker compose up -d --build'
             }
         }
 
