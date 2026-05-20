@@ -51,8 +51,6 @@ services:
       POSTGRES_USER: ${AUTH_DB_USER}
       POSTGRES_PASSWORD: ${AUTH_DB_PASSWORD}
       POSTGRES_DB: ${AUTH_DB_NAME}
-    ports:
-      - "${DB_PORT_MAPPING_AUTH:-}"
     volumes:
       - auth_db_data:/var/lib/postgresql/data
     networks:
@@ -79,8 +77,6 @@ services:
       POSTGRES_USER: ${PRODUCTS_DB_USER}
       POSTGRES_PASSWORD: ${PRODUCTS_DB_PASSWORD}
       POSTGRES_DB: ${PRODUCTS_DB_NAME}
-    ports:
-      - "${DB_PORT_MAPPING_PRODUCTS:-}"
     volumes:
       - products_db_data:/var/lib/postgresql/data
     networks:
@@ -107,8 +103,6 @@ services:
       POSTGRES_USER: ${SHOP_DB_USER}
       POSTGRES_PASSWORD: ${SHOP_DB_PASSWORD}
       POSTGRES_DB: ${SHOP_DB_NAME}
-    ports:
-      - "${DB_PORT_MAPPING_SHOP:-}"
     volumes:
       - shop_db_data:/var/lib/postgresql/data
     networks:
@@ -135,8 +129,6 @@ services:
       POSTGRES_USER: ${ORDER_DB_USER}
       POSTGRES_PASSWORD: ${ORDER_DB_PASSWORD}
       POSTGRES_DB: ${ORDER_DB_NAME}
-    ports:
-      - "${DB_PORT_MAPPING_ORDER:-}"
     volumes:
       - order_db_data:/var/lib/postgresql/data
     networks:
