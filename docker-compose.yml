@@ -34,7 +34,7 @@ services:
   # 1. AUTHENTICATION SERVICE & DATABASE
   # ========================================================
   auth-service:
-    build: ./services/auth-service
+    build: ./services/Auth-Service/Ecomm_Builder_Auth_Service
     container_name: ecomm-auth-service
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -60,7 +60,7 @@ services:
   # 2. PRODUCTS SERVICE & DATABASE
   # ========================================================
   products-service:
-    build: ./services/products-service
+    build: ./services/Products-Service/Ecomm_Builder_Products_Service
     container_name: ecomm-products-service
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -86,7 +86,7 @@ services:
   # 3. SHOP SERVICE & DATABASE
   # ========================================================
   shop-service:
-    build: ./services/shop-service
+    build: ./services/Shop-Service/Ecomm_Builder_Shop_Service
     container_name: ecomm-shop-service
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -112,7 +112,7 @@ services:
   # 4. ORDERING SERVICE & DATABASE
   # ========================================================
   order-service:
-    build: ./services/ordering-service
+    build: ./services/Ordering-Service/Ecomm_Builder_Order_Service
     container_name: ecomm-ordering-service
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
