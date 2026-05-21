@@ -33,8 +33,12 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast");
 
+app.UseDefaultFiles(); // Automatically looks for index.html at the root
+app.UseStaticFiles();
+
 app.MapGet("/api/health",() => "Hello from the backend");
 
+app.MapFallbackToFile("index.html");
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
