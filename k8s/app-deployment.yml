@@ -75,4 +75,4 @@ spec:
       name: http
   selector:
     app: ecomm-monolith-app
-  type: NodePort
+  type: LoadBalancer
