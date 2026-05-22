@@ -26,7 +26,12 @@ jobs:
       - name: Push Monolith Image to Docker Hub
         run: |
           docker push kashef7/ecomm-monolith-app:latest
-
+      - name: Build Nginx Image
+        run: |
+          docker build -t kashef7/nginx-proxy:latest -f nginx/Dockerfile .
+      - name: Push Nginx Image to Docker Hub
+        run: |
+          docker push kashef7/nginx-proxy:latest
       - name: Apply Kubernetes Declarative Manifests
         run: |
           kubectl apply -f k8s/

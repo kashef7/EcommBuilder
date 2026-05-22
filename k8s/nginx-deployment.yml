@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edge-nginx
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: edge-nginx
+  template:
+    metadata:
+      labels:
+        app: edge-nginx
+    spec:
+      containers:
+      - name: nginx
+        image: kashef7/nginx-proxy:latest # Change to your docker image tag structure
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: edge-nginx-service
+  namespace: default
+spec:
+  type: NodePort # This opens a dedicated port on your minikube machine
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30080 # This exposes port 30080 directly to your home network
+  selector:
+    app: edge-nginx
