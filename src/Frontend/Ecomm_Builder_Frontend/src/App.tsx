@@ -9,10 +9,15 @@ interface ServiceCheck {
   description: string
 }
 
+const AppUrl = import.meta.env.VITE_BACK_END_BASE_URL|| ""
+
+
+
+
 const SERVICES: ServiceCheck[] = [
   {
     name: 'API Backend',
-    endpoint: '/api/health',
+    endpoint: `${AppUrl}/api/health`,
     description: '.NET Web API',
   },
 ]
