@@ -62,8 +62,7 @@ public class AuthController : Controller
             signedInUser.UserId,
             signedInUser.UserName,
             signedInUser.Email);
-
-        // 👇 Set the HttpOnly cookie — JS cannot touch this
+        
         Response.Cookies.Append("auth_token", token, new CookieOptions
         {
             HttpOnly = true,
